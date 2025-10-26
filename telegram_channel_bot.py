@@ -9,7 +9,6 @@ from telegram.ext import (
 )
 from telegram.constants import ChatMemberStatus
 import re
-import asyncio
 from collections import defaultdict
 
 # Configure logging
@@ -20,10 +19,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Configuration
-BOT_TOKEN = '7363695605:AAGyAE1uRV7-qUUS8T25o2ALZooh43HahTI'
-ANALYST_GROUP_ID = -1003197843879 # Replace with your analyst group ID
-OPEN_GROUP_ID = -1003059299532    # Replace with your open group ID
-ADMIN_CONTACT = '@suraj_nandan'  # Replace with admin contact
+import os
+
+BOT_TOKEN = os.getenv('BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
+ANALYST_GROUP_ID = int(os.getenv('ANALYST_GROUP_ID', '-1001234567890'))
+OPEN_GROUP_ID = int(os.getenv('OPEN_GROUP_ID', '-1001234567891'))
+ADMIN_CONTACT = os.getenv('ADMIN_CONTACT', '@your_admin_username')
 
 # Spam detection keywords (customize as needed)
 SPAM_KEYWORDS = [
